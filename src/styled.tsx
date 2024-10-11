@@ -1,5 +1,6 @@
 import { ComponentProps, CSSProperties, ElementType } from "react";
 import fnv1a from "@sindresorhus/fnv1a";
+import React from "react";
 
 export function styled<C extends ElementType<{ className?: string }>>(
   Component: C,
