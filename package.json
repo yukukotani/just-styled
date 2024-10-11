@@ -1,40 +1,40 @@
 {
-  "name": "just-styled",
-  "version": "1.0.0",
-  "description": "",
-  "files": [
-    "dist"
-  ],
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
-  },
-  "scripts": {
-    "build": "tsup ./src"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@sindresorhus/fnv1a": "^3.1.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.3"
-  },
-  "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  }
+	"name": "just-styled",
+	"version": "1.0.0",
+	"description": "",
+	"files": ["dist"],
+	"types": "./dist/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		}
+	},
+	"scripts": {
+		"build": "tsup ./src",
+		"check": "biome check ./",
+		"fix": "biome check --write ./"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@sindresorhus/fnv1a": "^3.1.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.3",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"react": "19.0.0-rc-f994737d14-20240522",
+		"react-dom": "19.0.0-rc-f994737d14-20240522",
+		"tsup": "^8.3.0",
+		"typescript": "^5.6.3"
+	},
+	"peerDependencies": {
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	}
 }
