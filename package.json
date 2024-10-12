@@ -1,7 +1,6 @@
 {
 	"name": "just-styled",
-	"version": "1.0.0",
-	"description": "",
+	"version": "0.0.1",
 	"files": ["dist"],
 	"types": "./dist/index.d.ts",
 	"main": "./dist/index.js",
@@ -20,9 +19,6 @@
 		"test": "vitest run",
 		"test:watch": "vitest --watch"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
 	"dependencies": {
 		"@sindresorhus/fnv1a": "^3.1.0"
 	},
@@ -39,5 +35,9 @@
 	"peerDependencies": {
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
-	}
+	},
+	"description": "",
+	"keywords": ["React", "CSS-in-JS", "Next.js"],
+	"author": "Yuku Kotani (yukukotani@gmail.com)",
+	"license": "Apache-2.0"
 }
