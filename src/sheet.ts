@@ -10,7 +10,7 @@ export function generateSheets(props: CSSProperties) {
 	const sheets: Sheet[] = [];
 
 	for (const [key, value] of Object.entries(props)) {
-		if (value) {
+		if (value != null && value !== "") {
 			const kebab = toKebabCase(key);
 
 			const hash = fnv1a(`${key}${value}`, { size: 32 })
