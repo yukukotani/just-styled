@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generates camelCase property as kebab-case key 1`] = `
+[
+  {
+    "className": "jnqp7",
+    "css": ".jnqp7 { background-color: black; }",
+  },
+]
+`;
+
+exports[`generates multiple properties 1`] = `
+[
+  {
+    "className": "j1pim",
+    "css": ".j1pim { border: 1px solid red; }",
+  },
+  {
+    "className": "jr2ve",
+    "css": ".jr2ve { border-radius: 4px; }",
+  },
+]
+`;
+
+exports[`generates simple single property 1`] = `
+[
+  {
+    "className": "j1dqz",
+    "css": ".j1dqz { color: red; }",
+  },
+]
+`;
