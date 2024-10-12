@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generates camelCase property as kebab-case key 1`] = `
+exports[`generateSheets > generates camelCase property as kebab-case key 1`] = `
 [
   {
     "className": "jnqp7",
@@ -9,7 +9,7 @@ exports[`generates camelCase property as kebab-case key 1`] = `
 ]
 `;
 
-exports[`generates multiple properties 1`] = `
+exports[`generateSheets > generates multiple properties 1`] = `
 [
   {
     "className": "j1pim",
@@ -22,7 +22,7 @@ exports[`generates multiple properties 1`] = `
 ]
 `;
 
-exports[`generates simple single property 1`] = `
+exports[`generateSheets > generates simple single property 1`] = `
 [
   {
     "className": "j1dqz",
