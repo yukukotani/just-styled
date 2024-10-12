@@ -2,14 +2,24 @@ import type { CSSProperties, ComponentProps, ElementType } from "react";
 import React from "react";
 import { generateSheets } from "./sheet";
 
+type Props<C extends ElementType> = Omit<
+	ComponentProps<C>,
+	"className" | "style"
+> & {
+	style?: CSSProperties;
+};
+
 export function styled<C extends ElementType<{ className?: string }>>(
 	Component: C,
-	props: CSSProperties,
+	style: CSSProperties,
 ) {
-	const sheets = generateSheets(props);
-	const className = sheets.map((s) => s.className).join(" ");
+	const staticSheets = generateSheets(style);
 
-	return (props: ComponentProps<C>) => {
+	return ({ style, ...props }: Props<C>) => {
+		const dynamicSheets = style ? generateSheets(style) : [];
+		const sheets = [...staticSheets, ...dynamicSheets];
+		const className = sheets.map((s) => s.className).join(" ");
+
 		return (
 			<>
 				{sheets.map((s) => (

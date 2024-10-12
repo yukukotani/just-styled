@@ -5,5 +5,5 @@ const GrayBox = styled("div", {
 });
 
 export default function Home() {
-	return <GrayBox>aa</GrayBox>;
+	return <GrayBox style={{ color: "red" }}>aa</GrayBox>;
 }
