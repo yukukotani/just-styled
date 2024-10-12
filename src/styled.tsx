@@ -7,6 +7,7 @@ export function styled<C extends ElementType<{ className?: string }>>(
 	props: CSSProperties,
 ) {
 	const sheets = generateSheets(props);
+	const className = sheets.map((s) => s.className).join(" ");
 
 	return (props: ComponentProps<C>) => {
 		return (
@@ -17,10 +18,7 @@ export function styled<C extends ElementType<{ className?: string }>>(
 					</style>
 				))}
 				{/* @ts-expect-error */}
-				<Component
-					{...props}
-					className={sheets.map((s) => s.className).join(" ")}
-				/>
+				<Component {...props} className={className} />
 			</>
 		);
 	};
