@@ -13,11 +13,12 @@
 		}
 	},
 	"scripts": {
-		"build": "tsup ./src",
+		"build": "tsup",
 		"check": "biome check ./",
 		"fix": "biome check --write ./",
 		"test": "vitest run",
-		"test:watch": "vitest --watch"
+		"test:watch": "vitest --watch",
+		"prepublish": "pnpm run build"
 	},
 	"dependencies": {
 		"@sindresorhus/fnv1a": "^3.1.0"
