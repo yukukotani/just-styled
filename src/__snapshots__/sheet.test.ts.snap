@@ -9,6 +9,24 @@ exports[`generateSheets > generates camelCase property as kebab-case key 1`] = `
 ]
 `;
 
+exports[`generateSheets > generates custom property reference 1`] = `
+[
+  {
+    "className": "j1ovh",
+    "css": ".j1ovh { color: var(--j-colors-red); }",
+  },
+]
+`;
+
+exports[`generateSheets > generates custom property reference with kebab-case transformation 1`] = `
+[
+  {
+    "className": "j10nw",
+    "css": ".j10nw { color: var(--j-colors-light-gray); }",
+  },
+]
+`;
+
 exports[`generateSheets > generates multiple properties 1`] = `
 [
   {

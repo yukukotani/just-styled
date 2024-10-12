@@ -11,6 +11,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    "types": ["@vitest/browser/providers/playwright"]
+    "types": ["vitest/jsdom"]
   }
 }

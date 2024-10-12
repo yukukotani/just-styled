@@ -1,9 +1,7 @@
 {
 	"name": "just-styled",
 	"version": "0.0.1",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"types": "./dist/index.d.ts",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
@@ -27,28 +25,25 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.3",
+		"@testing-library/jest-dom": "^6.5.0",
+		"@testing-library/react": "^16.0.1",
+		"@types/jsdom": "^21.1.7",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
 		"@vitejs/plugin-react": "^4.3.2",
-		"@vitest/browser": "^2.1.2",
-		"playwright": "^1.48.0",
+		"jsdom": "^25.0.1",
 		"react": "19.0.0-rc-f994737d14-20240522",
 		"react-dom": "19.0.0-rc-f994737d14-20240522",
 		"tsup": "^8.3.0",
 		"typescript": "^5.6.3",
-		"vitest": "^2.1.2",
-		"vitest-browser-react": "^0.0.1"
+		"vitest": "^2.1.2"
 	},
 	"peerDependencies": {
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
 	"description": "",
-	"keywords": [
-		"React",
-		"CSS-in-JS",
-		"Next.js"
-	],
+	"keywords": ["React", "CSS-in-JS", "Next.js"],
 	"author": "Yuku Kotani (yukukotani@gmail.com)",
 	"license": "Apache-2.0"
 }

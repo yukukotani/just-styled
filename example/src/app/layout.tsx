@@ -1,3 +1,4 @@
+import { ThemeProvider } from "just-styled";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +13,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<ThemeProvider theme={{ tokens: { colors: { red: "#dc2626" } } }}>
+				<body>{children}</body>
+			</ThemeProvider>
 		</html>
 	);
 }

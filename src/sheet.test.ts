@@ -68,4 +68,22 @@ describe("generateSheets", () => {
 		expect(sheets2).toHaveLength(1);
 		expect(sheets1[0].className === sheets2[0].className).toBe(false);
 	});
+
+	test("generates custom property reference", () => {
+		const sheets = generateSheets({
+			color: "$colors.red",
+		});
+
+		expect(sheets).toHaveLength(1);
+		expect(sheets).toMatchSnapshot();
+	});
+
+	test("generates custom property reference with kebab-case transformation", () => {
+		const sheets = generateSheets({
+			color: "$colors.lightGray",
+		});
+
+		expect(sheets).toHaveLength(1);
+		expect(sheets).toMatchSnapshot();
+	});
 });
