@@ -61,6 +61,30 @@ This is just a syntax sugar for the code below.
 const Box = styled("div", {});
 ```
 
+### Nested Styles
+
+You can nest styles with selectors such as pseudo-classes.
+
+```tsx
+const StyledBox = styled("div", {
+  backgroundColor: "gray",
+  ":hover": {
+    backgroundColor: "black",
+  },
+});
+```
+
+Also supports media queries and other at rules.
+
+```tsx
+const StyledBox = styled("div", {
+  backgroundColor: "gray",
+  "@media (min-width: 768px)": {
+    backgroundColor: "black",
+  },
+});
+```
+
 ### Theme
 
 Create a config file anywhere you want.
