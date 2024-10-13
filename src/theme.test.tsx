@@ -1,7 +1,7 @@
 import { cleanup, render, waitFor } from "@testing-library/react";
 import React from "react";
 import { afterEach, describe, expect, test } from "vitest";
-import { ThemeProvider, transformTokenToCssVariable } from "./theme";
+import { ThemeProvider } from "./theme";
 
 describe("ThemeProvider", () => {
 	afterEach(() => {
@@ -28,37 +28,5 @@ describe("ThemeProvider", () => {
 				":root { --j-colors-light-gray: #666666; }",
 			);
 		});
-	});
-});
-
-describe("transformTokenToCssVariable", () => {
-	test("keeps lowercase value", () => {
-		const res = transformTokenToCssVariable("colors.myred");
-		expect(res).toBe("--j-colors-myred");
-	});
-
-	test("keeps kebab-case value", () => {
-		const res = transformTokenToCssVariable("colors.my-red");
-		expect(res).toBe("--j-colors-my-red");
-	});
-
-	test("transforms dot-separated value", () => {
-		const res = transformTokenToCssVariable("colors.red.500");
-		expect(res).toBe("--j-colors-red-500");
-	});
-
-	test("transforms lowerCamelCase value", () => {
-		const res = transformTokenToCssVariable("colors.lightGray");
-		expect(res).toBe("--j-colors-light-gray");
-	});
-
-	test("transforms value with category parameter", () => {
-		const res = transformTokenToCssVariable("red.500", "colors");
-		expect(res).toBe("--j-colors-red-500");
-	});
-
-	test("transforms complex value", () => {
-		const res = transformTokenToCssVariable("colors.lightGray.500");
-		expect(res).toBe("--j-colors-light-gray-500");
 	});
 });

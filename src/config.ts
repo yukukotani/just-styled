@@ -1,6 +1,6 @@
 export type ConfigSchema = {
 	tokens?: {
-		[K in TokenKind]: Record<string, TokensConfigValue>;
+		[K in TokenKind]?: Record<string, TokensConfigValue>;
 	};
 };
 

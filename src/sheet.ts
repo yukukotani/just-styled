@@ -1,6 +1,6 @@
 import fnv1a from "@sindresorhus/fnv1a";
 import type { CSSProperties } from "react";
-import { transformTokenToCssVariable } from "./theme";
+import type { ConfigSchema } from "./config";
 import { toKebabCase } from "./utils";
 
 type Sheet = {
@@ -29,6 +29,28 @@ export function generateSheets(props: CSSProperties) {
 	}
 
 	return sheets;
+}
+
+export function generateThemeSheets(config: ConfigSchema) {
+	if (config.tokens == null) {
+		return "";
+	}
+	const properties: string[] = [];
+	for (const kind in config.tokens) {
+		const tokens = config.tokens[kind as keyof typeof config.tokens];
+		for (const token in tokens) {
+			properties.push(
+				`${transformTokenToCssVariable(token, kind)}: ${resolvePropertyValue(tokens[token])};`,
+			);
+		}
+	}
+
+	return `:root { ${properties.join(" ")} }`;
+}
+
+export function transformTokenToCssVariable(token: string, kind?: string) {
+	const t = toKebabCase(token).replaceAll(".", "-");
+	return `--j${kind ? `-${kind}-` : "-"}${t}`;
 }
 
 export function resolvePropertyValue(value: unknown) {
