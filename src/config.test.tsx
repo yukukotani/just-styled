@@ -1,5 +1,3 @@
-import {} from "@testing-library/react";
-import React from "react";
 import { describe, expect, expectTypeOf, test } from "vitest";
 import { defineConfig } from "./config";
 

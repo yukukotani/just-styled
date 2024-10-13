@@ -5,7 +5,7 @@ import { Box } from "./Box";
 
 describe("Box component", async () => {
 	test("renders style tag in head", async () => {
-		render(<Box color="red">RedDiv</Box>);
+		render(<Box style={{ color: "red" }}>RedDiv</Box>);
 
 		await waitFor(() => {
 			const styleTag = Array.from(document.getElementsByTagName("style")).find(

@@ -5,7 +5,7 @@ import { generateSheets } from "./sheet";
 
 type TokensRef<Kind extends string> = `$${Kind}.${Tokens<"colors">}`;
 
-type Style =
+export type StyleObject =
 	| CSSProperties
 	| {
 			color: TokensRef<"colors">;
@@ -15,12 +15,12 @@ type Props<C extends ElementType> = Omit<
 	ComponentProps<C>,
 	"className" | "style"
 > & {
-	style?: Style;
+	style?: StyleObject;
 };
 
 export function styled<C extends ElementType<{ className?: string }>>(
 	Component: C,
-	style: Style,
+	style: StyleObject,
 ) {
 	const staticSheets = generateSheets(style);
 
