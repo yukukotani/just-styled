@@ -38,19 +38,17 @@ type TokensRef<Kind extends string> =
 export type StyleObject =
 	| CSSProperties
 	| {
-			[K in ColorProps]: TokensRef<"colors">;
-	  }
-	| {
-			[K in SpaceProps]: TokensRef<"spaces">;
-	  }
-	| {
-			[K in SizeProps]: TokensRef<"sizes">;
-	  }
-	| {
-			[K in FontSizeProps]: TokensRef<"fontSizes">;
-	  }
-	| {
-			[K in RadiusProps]: TokensRef<"radii">;
+			[K in keyof CSSProperties]: K extends ColorProps
+				? TokensRef<"colors">
+				: K extends SpaceProps
+					? TokensRef<"spaces">
+					: K extends SizeProps
+						? TokensRef<"sizes">
+						: K extends FontSizeProps
+							? TokensRef<"fontSizes">
+							: K extends RadiusProps
+								? TokensRef<"radii">
+								: CSSProperties[K];
 	  };
 
 type Props<C extends ElementType> = Omit<
