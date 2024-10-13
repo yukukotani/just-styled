@@ -25,16 +25,19 @@ function generateThemeSheets(config: ConfigSchema) {
 		return "";
 	}
 	const properties: string[] = [];
-	for (const key in config.tokens.colors) {
-		properties.push(
-			`${transformTokenToCssVariable(key, "colors")}: ${resolvePropertyValue(config.tokens.colors[key])};`,
-		);
+	for (const kind in config.tokens) {
+		const tokens = config.tokens[kind as keyof typeof config.tokens];
+		for (const token in tokens) {
+			properties.push(
+				`${transformTokenToCssVariable(token, kind)}: ${resolvePropertyValue(tokens[token])};`,
+			);
+		}
 	}
 
 	return `:root { ${properties.join(" ")} }`;
 }
 
-export function transformTokenToCssVariable(token: string, category?: string) {
+export function transformTokenToCssVariable(token: string, kind?: string) {
 	const t = toKebabCase(token).replaceAll(".", "-");
-	return `--j${category ? `-${category}-` : "-"}${t}`;
+	return `--j${kind ? `-${kind}-` : "-"}${t}`;
 }

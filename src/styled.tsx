@@ -3,12 +3,54 @@ import React from "react";
 import type { Tokens } from "./config";
 import { generateSheets } from "./sheet";
 
-type TokensRef<Kind extends string> = `$${Kind}.${Tokens<"colors">}`;
+type ColorProps =
+	| "color"
+	| "backgroundColor"
+	| "borderColor"
+	| "outlineColor"
+	| "accentColor"
+	| "caretColor";
+type SpaceProps =
+	| "margin"
+	| "marginTop"
+	| "marginRight"
+	| "marginBottom"
+	| "marginLeft"
+	| "padding"
+	| "paddingTop"
+	| "paddingRight"
+	| "paddingBotom"
+	| "paddingLeft"
+	| "gap";
+type SizeProps =
+	| "width"
+	| "maxWidth"
+	| "minWidth"
+	| "height"
+	| "maxHeight"
+	| "minHeight";
+type FontSizeProps = "fontSize";
+type RadiusProps = "borderRadius";
+
+type TokensRef<Kind extends string> =
+	`$${Kind}.${Tokens<Kind> extends string ? Tokens<Kind> : never}`;
 
 export type StyleObject =
 	| CSSProperties
 	| {
-			color: TokensRef<"colors">;
+			[K in ColorProps]: TokensRef<"colors">;
+	  }
+	| {
+			[K in SpaceProps]: TokensRef<"spaces">;
+	  }
+	| {
+			[K in SizeProps]: TokensRef<"sizes">;
+	  }
+	| {
+			[K in FontSizeProps]: TokensRef<"fontSizes">;
+	  }
+	| {
+			[K in RadiusProps]: TokensRef<"radii">;
 	  };
 
 type Props<C extends ElementType> = Omit<

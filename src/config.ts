@@ -1,9 +1,10 @@
 export type ConfigSchema = {
 	tokens?: {
-		colors: Record<string, TokensConfigValue>;
+		[K in TokenKind]: Record<string, TokensConfigValue>;
 	};
 };
 
+type TokenKind = "colors" | "spaces" | "sizes" | "fontSizes" | "radii";
 type TokensConfigValue = string;
 
 // biome-ignore lint/suspicious/noEmptyInterface: This is to be overridden in user's theme config.
@@ -15,11 +16,11 @@ export function defineConfig<const T extends ConfigSchema>(config: T) {
 
 type TokensConfig = JustStyledConfig extends Record<"tokens", unknown>
 	? JustStyledConfig["tokens"]
-	: Record<string, unknown>;
+	: undefined;
 
 export type Tokens<Kind extends string> = TokensConfig extends Record<
 	Kind,
-	Record<string, unknown>
+	Record<infer T, unknown>
 >
-	? keyof TokensConfig[Kind]
+	? T
 	: never;

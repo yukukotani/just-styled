@@ -2,7 +2,14 @@ import { Box, styled } from "just-styled";
 
 export default function Home() {
 	return (
-		<Box style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+		<Box
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: "$spaces.sm",
+				padding: "$spaces.md",
+			}}
+		>
 			<WithStyledFunction />
 			<WithBoxComponent />
 			<WithSemanticToken />
@@ -11,8 +18,7 @@ export default function Home() {
 }
 
 const StyledBox = styled("div", {
-	backgroundColor: "$colors.gray.200",
-	color: "$colors.red.600",
+	backgroundColor: "$colors.red.200",
 });
 
 export function WithStyledFunction() {
@@ -29,10 +35,8 @@ export function WithBoxComponent() {
 
 export function WithSemanticToken() {
 	return (
-		<Box
-			style={{ color: "$colors.primary", backgroundColor: "$colors.gray.600" }}
-		>
-			Inline styling using builtin Box component
+		<Box style={{ color: "$colors.primary", backgroundColor: "$colors.bg" }}>
+			Styled using semantic tokens which refers other tokens
 		</Box>
 	);
 }
