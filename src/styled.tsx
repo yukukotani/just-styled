@@ -35,21 +35,19 @@ type RadiusProps = "borderRadius";
 type TokensRef<Kind extends string> =
 	`$${Kind}.${Tokens<Kind> extends string ? Tokens<Kind> : never}`;
 
-export type StyleObject =
-	| CSSProperties
-	| {
-			[K in keyof CSSProperties]: K extends ColorProps
-				? TokensRef<"colors">
-				: K extends SpaceProps
-					? TokensRef<"spaces">
-					: K extends SizeProps
-						? TokensRef<"sizes">
-						: K extends FontSizeProps
-							? TokensRef<"fontSizes">
-							: K extends RadiusProps
-								? TokensRef<"radii">
-								: CSSProperties[K];
-	  };
+export type StyleObject = {
+	[K in keyof CSSProperties]: K extends ColorProps
+		? TokensRef<"colors">
+		: K extends SpaceProps
+			? TokensRef<"spaces">
+			: K extends SizeProps
+				? TokensRef<"sizes">
+				: K extends FontSizeProps
+					? TokensRef<"fontSizes">
+					: K extends RadiusProps
+						? TokensRef<"radii">
+						: CSSProperties[K];
+};
 
 type Props<C extends ElementType> = Omit<
 	ComponentProps<C>,
