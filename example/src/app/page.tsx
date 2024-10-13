@@ -14,6 +14,7 @@ export default function Home() {
 			<WithBoxComponent />
 			<WithSemanticToken />
 			<WithPseudoSelector />
+			<WithMediaQuery />
 		</Box>
 	);
 }
@@ -51,6 +52,21 @@ export function WithPseudoSelector() {
 			}}
 		>
 			Styled using :hover pseudo selector
+		</Box>
+	);
+}
+
+export function WithMediaQuery() {
+	return (
+		<Box
+			style={{
+				backgroundColor: "$colors.red.200",
+				"@media (max-width: 768px)": {
+					backgroundColor: "$colors.gray.200",
+				},
+			}}
+		>
+			Styled using media query (red in 768px or larger width, otherwise gray)
 		</Box>
 	);
 }

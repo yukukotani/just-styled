@@ -63,7 +63,7 @@ const Box = styled("div", {});
 
 ### Nested Styles
 
-You can nest styles with selectors such as pseudo-classes.
+You can nest styles with selectors such as pseudo classes.
 
 ```tsx
 const StyledBox = styled("div", {

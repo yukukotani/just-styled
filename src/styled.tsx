@@ -1,3 +1,5 @@
+/// <reference types="react/canary" />
+
 import type { ComponentProps, ElementType } from "react";
 import React from "react";
 import { generateSheets } from "./sheet";
