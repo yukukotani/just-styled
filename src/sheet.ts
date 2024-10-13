@@ -8,13 +8,15 @@ type Sheet = {
 	css: string;
 };
 
-export function generateSheets(props: StyleProps, selector = "") {
+export function generateSheets(props: StyleProps, selector = "", atRule = "") {
 	const sheets: Sheet[] = [];
 
 	for (const [rawKey, rawValue] of Object.entries(props)) {
 		if (rawValue != null && rawValue !== "") {
 			if (typeof rawValue === "object") {
-				const nestedSheets = generateSheets(rawValue, selector + rawKey);
+				const nestedSheets = rawKey.startsWith("@")
+					? generateSheets(rawValue, selector, rawKey) // At rules (media query)
+					: generateSheets(rawValue, selector + rawKey, atRule); // Selectors
 				sheets.push(...nestedSheets);
 				continue;
 			}
@@ -27,9 +29,10 @@ export function generateSheets(props: StyleProps, selector = "") {
 
 			const key = toKebabCase(rawKey);
 			const value = resolvePropertyValue(rawValue);
+			const rule = `.${className}${selector} { ${key}: ${value}; }`;
 			sheets.push({
 				className: className,
-				css: `.${className}${selector} { ${key}: ${value}; }`,
+				css: atRule ? `${atRule}{ ${rule} }` : rule,
 			});
 		}
 	}

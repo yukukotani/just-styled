@@ -142,6 +142,42 @@ describe("generateSheets", () => {
 		expect(sheets).toHaveLength(2);
 		expect(sheets).toMatchSnapshot();
 	});
+
+	test("generates a media query", () => {
+		const sheets = generateSheets({
+			"@media screen and (width: 600px)": {
+				color: "plum",
+			},
+		});
+
+		expect(sheets).toHaveLength(1);
+		expect(sheets).toMatchSnapshot();
+	});
+
+	test("generates an selector in a media query", () => {
+		const sheets = generateSheets({
+			"@media screen and (width: 600px)": {
+				":hover": {
+					color: "teal",
+				},
+			},
+		});
+
+		expect(sheets).toHaveLength(1);
+		expect(sheets).toMatchSnapshot();
+	});
+	test("generates an selector in a media query", () => {
+		const sheets = generateSheets({
+			":hover": {
+				"@media screen and (width: 600px)": {
+					color: "tomato",
+				},
+			},
+		});
+
+		expect(sheets).toHaveLength(1);
+		expect(sheets).toMatchSnapshot();
+	});
 });
 
 describe("generateThemeSheets", () => {

@@ -13,6 +13,15 @@ exports[`generateSheets > generates a combinator 1`] = `
 ]
 `;
 
+exports[`generateSheets > generates a media query 1`] = `
+[
+  {
+    "className": "j15vw",
+    "css": "@media screen and (width: 600px){ .j15vw { color: plum; } }",
+  },
+]
+`;
+
 exports[`generateSheets > generates a nested pseudo selector 1`] = `
 [
   {
@@ -52,6 +61,24 @@ exports[`generateSheets > generates an attribute selector 1`] = `
   {
     "className": "j12qb",
     "css": ".j12qb[data-foo="bar"] { color: yellow; }",
+  },
+]
+`;
+
+exports[`generateSheets > generates an selector in a media query 1`] = `
+[
+  {
+    "className": "ji344",
+    "css": "@media screen and (width: 600px){ .ji344:hover { color: teal; } }",
+  },
+]
+`;
+
+exports[`generateSheets > generates an selector in a media query 2`] = `
+[
+  {
+    "className": "j1msw",
+    "css": "@media screen and (width: 600px){ .j1msw:hover { color: tomato; } }",
   },
 ]
 `;
