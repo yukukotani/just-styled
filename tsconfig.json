@@ -12,5 +12,6 @@
     "isolatedModules": true,
     "jsx": "react",
     "types": ["vitest/jsdom"]
-  }
+  },
+  "exclude": ["./example"]
 }
