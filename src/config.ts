@@ -6,7 +6,7 @@ export type ConfigSchema = {
 
 type TokensConfigValue = string;
 
-// biome-ignore lint/suspicious/noEmptyInterface: <explanation>
+// biome-ignore lint/suspicious/noEmptyInterface: This is to be overridden in user's theme config.
 export interface JustStyledConfig {}
 
 export function defineConfig<const T extends ConfigSchema>(config: T) {
