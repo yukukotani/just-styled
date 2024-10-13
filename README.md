@@ -4,11 +4,12 @@ A dead simple CSS-in-JS library for React 19 or higher.
 
 ## Features
 
-- **Familiar API**: Both Style Prop and Styled Function like styled-components are supported
+- **Familiar API**: Both styled-components-like Styled Function and Style Prop are supported
 - **Typed Theme**: Auto-completes your design token
-- **RSC Support**: It just work. Nothing bothers you
+- **RSC Support**: It just works. Nothing bothers you
+- **No Build Step**: No need to set up build configuration
 - **Small Runtime:** It's 1.7 kb minified & gzipped
-- **Atomic CSS**: Generates optimized stylesheet to keep your stylesheet small
+- **Atomic CSS**: Generates optimized stylesheet to keep your distribution small
 
 ## Installation
 
@@ -89,7 +90,7 @@ declare module "just-styled" {
 }
 ```
 
-Then, put ThemeProvider on the top of your component tree (e.g., `layout.tsx` on Next.js).
+Then, put ThemeProvider at the top of your component tree (e.g., `layout.tsx` on Next.js).
 
 ```tsx
 // import the config you defined
@@ -109,9 +110,9 @@ export default function RootLayout({
 }
 ```
 
-Now, you can use your token.
+Now, you can use your tokens with auto-completion.
 
-```
+```tsx
 const StyledBox = styled("div", {
   backgroundColor: "$colors.bg",
   padding: "$spaces.md",
