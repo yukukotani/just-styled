@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type * as CSS from "csstype";
 import type { Tokens } from "./config";
 
 type ColorProps =
@@ -33,6 +33,13 @@ type RadiusProps = "borderRadius";
 type TokensRef<Kind extends string> =
 	`$${Kind}.${Tokens<Kind> extends string ? Tokens<Kind> : never}`;
 
+/**
+ * Define our `CSSProperties` type here because:
+ * - React's `CSSProperties` type uses `string` but not `string & {}` so that it breaks literal auto-completion
+ * - csstype's `CSS.Properties` type without type parameters doesn't receive number value
+ */
+type CSSProperties = CSS.Properties<(string & {}) | number>;
+
 export type StyleProps =
 	| CSSProperties
 	| {
@@ -49,5 +56,5 @@ export type StyleProps =
 								: CSSProperties[K];
 	  }
 	| {
-			[K in string]: string | StyleProps;
+			[K in string]: (string & {}) | StyleProps;
 	  };
