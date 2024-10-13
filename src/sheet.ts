@@ -20,7 +20,7 @@ export function generateSheets(props: CSSProperties) {
 			const className = `j${hash}`;
 
 			const key = toKebabCase(rawKey);
-			const value = transformValue(rawValue);
+			const value = resolvePropertyValue(rawValue);
 			sheets.push({
 				className: className,
 				css: `.${className} { ${key}: ${value}; }`,
@@ -31,7 +31,7 @@ export function generateSheets(props: CSSProperties) {
 	return sheets;
 }
 
-function transformValue(value: unknown) {
+export function resolvePropertyValue(value: unknown) {
 	if (typeof value === "string" && value.startsWith("$")) {
 		const cssVariableName = transformTokenToCssVariable(value.slice(1));
 		return `var(${cssVariableName})`;

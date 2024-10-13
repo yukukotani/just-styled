@@ -1,6 +1,7 @@
 import type { FC, PropsWithChildren } from "react";
 import React from "react";
 import type { ConfigSchema } from "./config";
+import { resolvePropertyValue } from "./sheet";
 import { toKebabCase } from "./utils";
 
 export const ThemeProvider: FC<PropsWithChildren<{ config: ConfigSchema }>> = ({
@@ -26,7 +27,7 @@ function generateThemeSheets(config: ConfigSchema) {
 	const properties: string[] = [];
 	for (const key in config.tokens.colors) {
 		properties.push(
-			`${transformTokenToCssVariable(key, "colors")}: ${config.tokens.colors[key]};`,
+			`${transformTokenToCssVariable(key, "colors")}: ${resolvePropertyValue(config.tokens.colors[key])};`,
 		);
 	}
 
