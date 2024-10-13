@@ -1,5 +1,61 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`generateSheets > generates a combinator 1`] = `
+[
+  {
+    "className": "j1dqz",
+    "css": ".j1dqz { color: red; }",
+  },
+  {
+    "className": "jiy1a",
+    "css": ".jiy1a> span { color: purple; }",
+  },
+]
+`;
+
+exports[`generateSheets > generates a nested pseudo selector 1`] = `
+[
+  {
+    "className": "j1dqz",
+    "css": ".j1dqz { color: red; }",
+  },
+  {
+    "className": "jm8xk",
+    "css": ".jm8xk:hover { color: blue; }",
+  },
+  {
+    "className": "je9tx",
+    "css": ".je9tx:hover:active { background-color: pink; }",
+  },
+]
+`;
+
+exports[`generateSheets > generates a pseudo selector 1`] = `
+[
+  {
+    "className": "j1dqz",
+    "css": ".j1dqz { color: red; }",
+  },
+  {
+    "className": "jm8xk",
+    "css": ".jm8xk:hover { color: blue; }",
+  },
+]
+`;
+
+exports[`generateSheets > generates an attribute selector 1`] = `
+[
+  {
+    "className": "j1dqz",
+    "css": ".j1dqz { color: red; }",
+  },
+  {
+    "className": "j12qb",
+    "css": ".j12qb[data-foo="bar"] { color: yellow; }",
+  },
+]
+`;
+
 exports[`generateSheets > generates camelCase property as kebab-case key 1`] = `
 [
   {

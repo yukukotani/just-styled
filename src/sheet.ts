@@ -1,6 +1,6 @@
 import fnv1a from "@sindresorhus/fnv1a";
-import type { CSSProperties } from "react";
 import type { ConfigSchema } from "./config";
+import type { StyleProps } from "./style-props";
 import { toKebabCase } from "./utils";
 
 type Sheet = {
@@ -8,12 +8,18 @@ type Sheet = {
 	css: string;
 };
 
-export function generateSheets(props: CSSProperties) {
+export function generateSheets(props: StyleProps, selector = "") {
 	const sheets: Sheet[] = [];
 
 	for (const [rawKey, rawValue] of Object.entries(props)) {
 		if (rawValue != null && rawValue !== "") {
-			const hash = fnv1a(`${rawKey}${rawValue}`, { size: 32 })
+			if (typeof rawValue === "object") {
+				const nestedSheets = generateSheets(rawValue, selector + rawKey);
+				sheets.push(...nestedSheets);
+				continue;
+			}
+
+			const hash = fnv1a(`${rawKey}${rawValue}${selector}`, { size: 32 })
 				.toString(36)
 				.slice(0, 4);
 			// appends prefix to avoid a leading number which is invalid as a className
@@ -23,7 +29,7 @@ export function generateSheets(props: CSSProperties) {
 			const value = resolvePropertyValue(rawValue);
 			sheets.push({
 				className: className,
-				css: `.${className} { ${key}: ${value}; }`,
+				css: `.${className}${selector} { ${key}: ${value}; }`,
 			});
 		}
 	}

@@ -13,6 +13,7 @@ export default function Home() {
 			<WithStyledFunction />
 			<WithBoxComponent />
 			<WithSemanticToken />
+			<WithPseudoSelector />
 		</Box>
 	);
 }
@@ -37,6 +38,19 @@ export function WithSemanticToken() {
 	return (
 		<Box style={{ color: "$colors.primary", backgroundColor: "$colors.bg" }}>
 			Styled using semantic tokens which refers other tokens
+		</Box>
+	);
+}
+
+export function WithPseudoSelector() {
+	return (
+		<Box
+			style={{
+				color: "$colors.red.200",
+				":hover": { color: "$colors.red.600", backgroundColor: "$colors.bg" },
+			}}
+		>
+			Styled using :hover pseudo selector
 		</Box>
 	);
 }

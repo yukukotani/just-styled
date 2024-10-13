@@ -91,6 +91,57 @@ describe("generateSheets", () => {
 		expect(sheets).toHaveLength(1);
 		expect(sheets).toMatchSnapshot();
 	});
+
+	test("generates a pseudo selector", () => {
+		const sheets = generateSheets({
+			color: "red",
+			":hover": {
+				color: "blue",
+			},
+		});
+
+		expect(sheets).toHaveLength(2);
+		expect(sheets).toMatchSnapshot();
+	});
+
+	test("generates a nested pseudo selector", () => {
+		const sheets = generateSheets({
+			color: "red",
+			":hover": {
+				color: "blue",
+				":active": {
+					backgroundColor: "pink",
+				},
+			},
+		});
+
+		expect(sheets).toHaveLength(3);
+		expect(sheets).toMatchSnapshot();
+	});
+
+	test("generates an attribute selector", () => {
+		const sheets = generateSheets({
+			color: "red",
+			'[data-foo="bar"]': {
+				color: "yellow",
+			},
+		});
+
+		expect(sheets).toHaveLength(2);
+		expect(sheets).toMatchSnapshot();
+	});
+
+	test("generates a combinator", () => {
+		const sheets = generateSheets({
+			color: "red",
+			"> span": {
+				color: "purple",
+			},
+		});
+
+		expect(sheets).toHaveLength(2);
+		expect(sheets).toMatchSnapshot();
+	});
 });
 
 describe("generateThemeSheets", () => {

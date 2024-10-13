@@ -14,7 +14,9 @@
 	},
 	"scripts": {
 		"build": "tsup",
-		"check": "biome check ./",
+		"check": "pnpm run /check:+/",
+		"check:biome": "biome check ./",
+		"check:tsc": "tsc --noEmit",
 		"fix": "biome check --write ./",
 		"test": "vitest run",
 		"test:watch": "vitest --watch",
