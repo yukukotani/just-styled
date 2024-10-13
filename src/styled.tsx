@@ -1,17 +1,26 @@
 import type { CSSProperties, ComponentProps, ElementType } from "react";
 import React from "react";
+import type { Tokens } from "./config";
 import { generateSheets } from "./sheet";
+
+type TokensRef<Kind extends string> = `$${Kind}.${Tokens<"colors">}`;
+
+type Style =
+	| CSSProperties
+	| {
+			color: TokensRef<"colors">;
+	  };
 
 type Props<C extends ElementType> = Omit<
 	ComponentProps<C>,
 	"className" | "style"
 > & {
-	style?: CSSProperties;
+	style?: Style;
 };
 
 export function styled<C extends ElementType<{ className?: string }>>(
 	Component: C,
-	style: CSSProperties,
+	style: Style,
 ) {
 	const staticSheets = generateSheets(style);
 

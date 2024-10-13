@@ -1,20 +1,13 @@
 import type { FC, PropsWithChildren } from "react";
 import React from "react";
+import type { ConfigSchema } from "./config";
 import { toKebabCase } from "./utils";
 
-export type ThemeInput = {
-	tokens: Tokens;
-};
-type Tokens = {
-	colors: Record<string, TokenValue>;
-};
-type TokenValue = string | { dark: string; light: string };
-
-export const ThemeProvider: FC<PropsWithChildren<{ theme: ThemeInput }>> = ({
-	theme,
+export const ThemeProvider: FC<PropsWithChildren<{ config: ConfigSchema }>> = ({
+	config,
 	children,
 }) => {
-	const sheet = generateThemeSheets(theme);
+	const sheet = generateThemeSheets(config);
 
 	return (
 		<>
@@ -26,17 +19,21 @@ export const ThemeProvider: FC<PropsWithChildren<{ theme: ThemeInput }>> = ({
 	);
 };
 
-function generateThemeSheets(theme: ThemeInput) {
+function generateThemeSheets(config: ConfigSchema) {
+	if (config.tokens == null) {
+		return "";
+	}
 	const properties: string[] = [];
-	for (const key in theme.tokens.colors) {
+	for (const key in config.tokens.colors) {
 		properties.push(
-			`${getCustomPropertyName("colors", key)}: ${theme.tokens.colors[key]};`,
+			`${transformTokenToCssVariable(key, "colors")}: ${config.tokens.colors[key]};`,
 		);
 	}
 
 	return `:root { ${properties.join(" ")} }`;
 }
 
-function getCustomPropertyName(category: string, key: string) {
-	return `--j-${category}-${toKebabCase(key)}`;
+export function transformTokenToCssVariable(token: string, category?: string) {
+	const t = toKebabCase(token).replaceAll(".", "-");
+	return `--j${category ? `-${category}-` : "-"}${t}`;
 }

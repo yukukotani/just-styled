@@ -1,5 +1,6 @@
 import { ThemeProvider } from "just-styled";
 import type { Metadata } from "next";
+import { config } from "../theme-config";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -13,7 +14,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<ThemeProvider theme={{ tokens: { colors: { red: "#dc2626" } } }}>
+			<ThemeProvider config={config}>
 				<body>{children}</body>
 			</ThemeProvider>
 		</html>

@@ -1,5 +1,6 @@
 import fnv1a from "@sindresorhus/fnv1a";
 import type { CSSProperties } from "react";
+import { transformTokenToCssVariable } from "./theme";
 import { toKebabCase } from "./utils";
 
 type Sheet = {
@@ -32,8 +33,8 @@ export function generateSheets(props: CSSProperties) {
 
 function transformValue(value: unknown) {
 	if (typeof value === "string" && value.startsWith("$")) {
-		const customPropertyName = toKebabCase(value).slice(1).replaceAll(".", "-");
-		return `var(--j-${customPropertyName})`;
+		const cssVariableName = transformTokenToCssVariable(value.slice(1));
+		return `var(${cssVariableName})`;
 	}
 
 	return String(value);
