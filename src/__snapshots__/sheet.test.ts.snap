@@ -134,6 +134,6 @@ exports[`generateSheets > generates simple single property 1`] = `
 
 exports[`generateThemeSheets > generates a token which refer the other token 1`] = `":root { --j-colors-gray: #666666; --j-colors-primary: var(--j-colors-gray); }"`;
 
-exports[`generateThemeSheets > generates multiple tokens 1`] = `":root { --j-colors-gray-200: #eeeeee; --j-colors-gray-600: #666666; --j-spaces-sm: 4px; --j-sizes-lg: 120px; --j-fontSizes-md: 16px; --j-radii-xs: 2px; }"`;
+exports[`generateThemeSheets > generates multiple tokens 1`] = `":root { --j-colors-gray-200: #eeeeee; --j-colors-gray-600: #666666; --j-spaces-sm: 4px; --j-sizes-lg: 120px; --j-font-sizes-md: 16px; --j-radii-xs: 2px; }"`;
 
 exports[`generateThemeSheets > generates single token 1`] = `":root { --j-colors-light-gray: #666666; }"`;

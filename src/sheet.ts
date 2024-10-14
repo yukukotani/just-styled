@@ -59,7 +59,7 @@ export function generateThemeSheets(config: ConfigSchema) {
 
 export function transformTokenToCssVariable(token: string, kind?: string) {
 	const t = toKebabCase(token).replaceAll(".", "-");
-	return `--j${kind ? `-${kind}-` : "-"}${t}`;
+	return `--j${kind ? `-${toKebabCase(kind)}-` : "-"}${t}`;
 }
 
 export function resolvePropertyValue(value: unknown) {
