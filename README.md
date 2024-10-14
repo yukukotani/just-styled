@@ -87,7 +87,7 @@ const StyledBox = styled("div", {
 
 ### Theme
 
-Create a config file anywhere you want.
+Create a config file anywhere you want. Currently `colors`, `spaces`, `sizes`, `fontSizes`, and `radii` tokens are supported.
 
 ```tsx
 export const config = defineConfig({
