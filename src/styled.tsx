@@ -12,10 +12,8 @@ type Props<C extends ElementType> = Omit<
 	style?: StyleProps;
 };
 
-export function styled<C extends ElementType<{ className?: string }>>(
-	Component: C,
-	style: StyleProps,
-) {
+// TODO: Shoud emit type error if C has no `className` props
+export function styled<C extends ElementType>(Component: C, style: StyleProps) {
 	const staticSheets = generateSheets(style);
 
 	return ({ style, ...props }: Props<C>) => {
