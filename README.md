@@ -90,6 +90,8 @@ const StyledBox = styled("div", {
 Create a config file anywhere you want. Currently `colors`, `spaces`, `sizes`, `fontSizes`, and `radii` tokens are supported.
 
 ```tsx
+import { defineConfig } from "just-styled";
+
 export const config = defineConfig({
   tokens: {
     colors: {
