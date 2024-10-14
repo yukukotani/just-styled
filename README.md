@@ -8,7 +8,7 @@ A dead simple CSS-in-JS library for React 19 or higher.
 - **Typed Theme**: Auto-completes your design token
 - **RSC Support**: It just works. Nothing bothers you
 - **No Build Step**: No need to set up build configuration
-- **Small Runtime:** It's 1.7 kb minified & gzipped
+- **Small Runtime:** It's 1.8 kb minified & gzipped
 - **Atomic CSS**: Generates optimized stylesheet to keep your distribution small
 
 ## Installation
