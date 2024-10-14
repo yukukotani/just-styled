@@ -41,18 +41,17 @@ type TokensRef<Kind extends string> =
 type CSSProperties = CSS.Properties<(string & {}) | number>;
 
 export type StyleProps =
-	| CSSProperties
 	| {
 			[K in keyof CSSProperties]: K extends ColorProps
-				? TokensRef<"colors">
+				? TokensRef<"colors"> | CSSProperties[K]
 				: K extends SpaceProps
-					? TokensRef<"spaces">
+					? TokensRef<"spaces"> | CSSProperties[K]
 					: K extends SizeProps
-						? TokensRef<"sizes">
+						? TokensRef<"sizes"> | CSSProperties[K]
 						: K extends FontSizeProps
-							? TokensRef<"fontSizes">
+							? TokensRef<"fontSizes"> | CSSProperties[K]
 							: K extends RadiusProps
-								? TokensRef<"radii">
+								? TokensRef<"radii"> | CSSProperties[K]
 								: CSSProperties[K];
 	  }
 	| {
