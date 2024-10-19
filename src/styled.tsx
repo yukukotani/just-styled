@@ -6,31 +6,31 @@ import { generateSheets } from "./sheet";
 import type { StyleProps } from "./style-props";
 
 type Props<C extends ElementType> = Omit<
-	ComponentProps<C>,
-	"className" | "style"
+  ComponentProps<C>,
+  "className" | "style"
 > & {
-	style?: StyleProps;
+  style?: StyleProps;
 };
 
 // TODO: Shoud emit type error if C has no `className` props
 export function styled<C extends ElementType>(Component: C, style: StyleProps) {
-	const staticSheets = generateSheets(style);
+  const staticSheets = generateSheets(style);
 
-	return ({ style, ...props }: Props<C>) => {
-		const dynamicSheets = style ? generateSheets(style) : [];
-		const sheets = [...staticSheets, ...dynamicSheets];
-		const className = sheets.map((s) => s.className).join(" ");
+  return ({ style, ...props }: Props<C>) => {
+    const dynamicSheets = style ? generateSheets(style) : [];
+    const sheets = [...staticSheets, ...dynamicSheets];
+    const className = sheets.map((s) => s.className).join(" ");
 
-		return (
-			<>
-				{sheets.map((s) => (
-					<style key={s.className} href={s.className} precedence="medium">
-						{s.css}
-					</style>
-				))}
-				{/* @ts-expect-error */}
-				<Component {...props} className={className} />
-			</>
-		);
-	};
+    return (
+      <>
+        {sheets.map((s) => (
+          <style key={s.className} href={s.className} precedence="medium">
+            {s.css}
+          </style>
+        ))}
+        {/* @ts-expect-error */}
+        <Component {...props} className={className} />
+      </>
+    );
+  };
 }
