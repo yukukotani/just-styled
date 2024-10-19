@@ -1,17 +1,16 @@
-name: TypeCheck
+name: Test
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
+    strategy:
+      matrix:
+        branch:
+          - ${{ github.head_ref }}
+          - "main"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,6 +27,28 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Run test
         run: pnpm run test:coverage
-      - name: Show coverage
-        if: ${{ always() && github.event_name == 'pull_request' }}
+      - name: "Upload Coverage"
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.branch }}
+          path: coverage
+  report-coverage:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: "Download Coverage Artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-${{ github.head_ref }}
+          path: coverage
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-main
+          path: coverage-main
+      - name: "Report Coverage"
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-compare-path: coverage-main/coverage-summary.json
