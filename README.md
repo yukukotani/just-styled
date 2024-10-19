@@ -14,7 +14,7 @@ A dead simple CSS-in-JS library for React 19 or higher.
 ## Installation
 
 > [!IMPORTANT]
-> just-styled requires React 19 since it's based on [React 19's stylesheet support](https://react.dev/blog/2024/04/25/react-19#support-for-stylesheets). You can try it on [Next.js 15 RC](https://nextjs.org/blog/next-15-rc) for now.
+> just-styled requires React 19 since it's based on [React 19's stylesheet support](https://react.dev/blog/2024/04/25/react-19#support-for-stylesheets). You can try it on [Next.js 15 RC](https://nextjs.org/blog/next-15-rc2) for now.
 
 ```bash
 npm install just-styled
