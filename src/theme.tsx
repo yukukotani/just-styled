@@ -4,17 +4,17 @@ import type { ConfigSchema } from "./config";
 import { generateThemeSheets } from "./sheet";
 
 export const ThemeProvider: FC<PropsWithChildren<{ config: ConfigSchema }>> = ({
-	config,
-	children,
+  config,
+  children,
 }) => {
-	const sheet = generateThemeSheets(config);
+  const sheet = generateThemeSheets(config);
 
-	return (
-		<>
-			<style precedence="theme" href="theme">
-				{sheet}
-			</style>
-			{children}
-		</>
-	);
+  return (
+    <>
+      <style precedence="theme" href="theme">
+        {sheet}
+      </style>
+      {children}
+    </>
+  );
 };
