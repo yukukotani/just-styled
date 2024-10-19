@@ -1,11 +1,10 @@
-name: Lint
+name: TypeCheck
 
 on:
   push:
-  pull_request:
 
 jobs:
-  quality:
+  type-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
