@@ -1,11 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`styled > renders dynamic style 1`] = `".j1dqz { color: red; }"`;
-
-exports[`styled > renders dynamic style 2`] = `".jyt81 { gap: var(--j-spaces-md); }"`;
-
-exports[`styled > renders dynamic style 3`] = `".j1o5l { background-color: gray; }"`;
-
 exports[`styled > renders style tag in head 1`] = `".j1dqz { color: red; }"`;
 
 exports[`styled > renders style tag in head 2`] = `".jyt81 { gap: var(--j-spaces-md); }"`;
