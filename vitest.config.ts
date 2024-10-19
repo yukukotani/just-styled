@@ -7,5 +7,9 @@ export default defineConfig({
     setupFiles: "./vitest.setup.ts",
     globals: true,
     environment: "jsdom",
+    coverage: {
+      reporter: ["text", "json-summary", "json"],
+      reportOnFailure: true,
+    },
   },
 });

@@ -20,6 +20,7 @@
     "fix": "biome check --write ./",
     "test": "vitest run",
     "test:watch": "vitest --watch",
+    "test:coverage": "vitest run --coverage.enabled true",
     "prepublish": "pnpm run build"
   },
   "dependencies": {
@@ -34,6 +35,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.3.2",
+    "@vitest/coverage-v8": "2.1.2",
     "jsdom": "^25.0.1",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
