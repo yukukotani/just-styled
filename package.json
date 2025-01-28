@@ -1,7 +1,9 @@
 {
   "name": "just-styled",
-  "version": "0.1.1",
-  "files": ["dist"],
+  "version": "0.1.2",
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -52,7 +54,11 @@
   },
   "packageManager": "pnpm@9.12.2",
   "description": "",
-  "keywords": ["React", "CSS-in-JS", "Next.js"],
+  "keywords": [
+    "React",
+    "CSS-in-JS",
+    "Next.js"
+  ],
   "author": "Yuku Kotani (yukukotani@gmail.com)",
   "license": "Apache-2.0"
 }
