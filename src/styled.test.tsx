@@ -58,6 +58,27 @@ describe("styled", async () => {
     });
   });
 
+  test("renders dynamic className", async () => {
+    const GreenDiv = styled("div", {
+      color: "green",
+    });
+
+    const res = render(
+      <GreenDiv data-testid="green-div" className="foo">
+        GreenDiv
+      </GreenDiv>,
+    );
+    const el = await res.findByTestId("green-div");
+
+    await waitFor(() => {
+      expect(generateSheets).toHaveBeenCalledTimes(1);
+      expect(generateSheets).toHaveBeenCalledWith({ color: "green" });
+
+      // fooが末尾についていることを確認
+      expect(el.className).toMatch(/^(.+)\s(foo)$/);
+    });
+  });
+
   test("renders styled custom component", async () => {
     const BlueComp = styled(Comp, {
       color: "blue",

@@ -5,10 +5,7 @@ import React from "react";
 import { generateSheets } from "./sheet";
 import type { StyleProps } from "./style-props";
 
-type Props<C extends ElementType> = Omit<
-  ComponentProps<C>,
-  "className" | "style"
-> & {
+type Props<C extends ElementType> = Omit<ComponentProps<C>, "style"> & {
   style?: StyleProps;
 };
 
@@ -16,10 +13,13 @@ type Props<C extends ElementType> = Omit<
 export function styled<C extends ElementType>(Component: C, style: StyleProps) {
   const staticSheets = generateSheets(style);
 
-  return ({ style, ...props }: Props<C>) => {
-    const dynamicSheets = style ? generateSheets(style) : [];
+  return (props: Props<C>) => {
+    const dynamicSheets = props.style ? generateSheets(props.style) : [];
     const sheets = [...staticSheets, ...dynamicSheets];
-    const className = sheets.map((s) => s.className).join(" ");
+    const sheetClassName = sheets.map((s) => s.className).join(" ");
+    const className = props.className
+      ? `${sheetClassName} ${props.className}`
+      : sheetClassName;
 
     return (
       <>
