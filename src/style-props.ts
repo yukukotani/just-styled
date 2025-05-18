@@ -17,7 +17,7 @@ type SpaceProps =
   | "padding"
   | "paddingTop"
   | "paddingRight"
-  | "paddingBotom"
+  | "paddingBottom"
   | "paddingLeft"
   | "gap";
 type SizeProps =
