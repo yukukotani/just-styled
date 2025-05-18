@@ -27,5 +27,4 @@ This repository contains **just-styled**, a small CSS-in-JS library for React 19
 - The Next.js example in `example/` can be used to observe the library in action.
 
 ## PR instructions
-Title format: `[just-styled] <Title>`
 Descriptions must be written in Japanese.
