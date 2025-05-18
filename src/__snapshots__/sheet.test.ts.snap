@@ -110,6 +110,32 @@ exports[`generateSheets > generates custom property reference with kebab-case tr
 ]
 `;
 
+exports[`generateSheets > generates grouped props 1`] = `
+[
+  {
+    "className": "j1kv7",
+    "css": ".j1kv7 { width: var(--j-sizes-md); }",
+  },
+  {
+    "className": "j15ya",
+    "css": ".j15ya { height: var(--j-sizes-md); }",
+  },
+]
+`;
+
+exports[`generateSheets > generates grouped props in media query 1`] = `
+[
+  {
+    "className": "j1i0a",
+    "css": "@media (min-width: 600px){ .j1i0a { max-width: 100%; } }",
+  },
+  {
+    "className": "j19vc",
+    "css": "@media (min-width: 600px){ .j19vc { max-height: 100%; } }",
+  },
+]
+`;
+
 exports[`generateSheets > generates multiple properties 1`] = `
 [
   {

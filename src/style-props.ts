@@ -1,5 +1,6 @@
 import type * as CSS from "csstype";
 import type { Tokens } from "./config";
+import type { GroupingProps, groupingMap } from "./groupings";
 
 type ColorProps =
   | "color"
@@ -41,7 +42,7 @@ type TokensRef<Kind extends string> =
 type CSSProperties = CSS.Properties<(string & {}) | number>;
 
 export type StyleProps =
-  | {
+  | ({
       [K in keyof CSSProperties]: K extends ColorProps
         ? TokensRef<"colors"> | CSSProperties[K]
         : K extends SpaceProps
@@ -53,7 +54,11 @@ export type StyleProps =
               : K extends RadiusProps
                 ? TokensRef<"radii"> | CSSProperties[K]
                 : CSSProperties[K];
-    }
+    } & {
+      [K in GroupingProps]?:
+        | TokensRef<(typeof groupingMap)[K]["kind"]>
+        | CSSProperties[(typeof groupingMap)[K]["props"][number]];
+    })
   | {
       [K in string]: (string & {}) | StyleProps;
     };
