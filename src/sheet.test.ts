@@ -178,6 +178,26 @@ describe("generateSheets", () => {
     expect(sheets).toHaveLength(1);
     expect(sheets).toMatchSnapshot();
   });
+
+  test("generates grouped props", () => {
+    const sheets = generateSheets({
+      size: "$sizes.md",
+    });
+
+    expect(sheets).toHaveLength(2);
+    expect(sheets).toMatchSnapshot();
+  });
+
+  test("generates grouped props in media query", () => {
+    const sheets = generateSheets({
+      "@media (min-width: 600px)": {
+        maxSize: "100%",
+      },
+    });
+
+    expect(sheets).toHaveLength(2);
+    expect(sheets).toMatchSnapshot();
+  });
 });
 
 describe("generateThemeSheets", () => {

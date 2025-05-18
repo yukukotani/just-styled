@@ -1,5 +1,6 @@
 import fnv1a from "@sindresorhus/fnv1a";
 import type { ConfigSchema } from "./config";
+import { groupingMap } from "./groupings";
 import type { StyleProps } from "./style-props";
 import { toKebabCase } from "./utils";
 
@@ -13,6 +14,19 @@ export function generateSheets(props: StyleProps, selector = "", atRule = "") {
 
   for (const [rawKey, rawValue] of Object.entries(props)) {
     if (rawValue != null && rawValue !== "") {
+      if (rawKey in groupingMap) {
+        const map = groupingMap[rawKey as keyof typeof groupingMap];
+        for (const prop of map.props) {
+          const nestedSheets = generateSheets(
+            { [prop]: rawValue } as StyleProps,
+            selector,
+            atRule,
+          );
+          sheets.push(...nestedSheets);
+        }
+        continue;
+      }
+
       if (typeof rawValue === "object") {
         const nestedSheets = rawKey.startsWith("@")
           ? generateSheets(rawValue, selector, rawKey) // At rules (media query)

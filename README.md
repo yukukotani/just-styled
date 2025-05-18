@@ -146,3 +146,24 @@ const StyledBox = styled("div", {
 
 <StyledBox style={{ color: "$colors.red.600" }}>Styled!</StyledBox>;
 ```
+
+### Grouping Props
+
+Several convenience props apply values to multiple CSS properties at once.
+
+| Prop     | Expanded properties               |
+| -------- | --------------------------------- |
+| `marginX` | `marginLeft`, `marginRight`       |
+| `marginY` | `marginTop`, `marginBottom`       |
+| `paddingX` | `paddingLeft`, `paddingRight`     |
+| `paddingY` | `paddingTop`, `paddingBottom`     |
+| `size`     | `width`, `height`                |
+| `minSize`  | `minWidth`, `minHeight`          |
+| `maxSize`  | `maxWidth`, `maxHeight`          |
+
+```tsx
+const Box = styled("div", {
+  size: "$sizes.md",
+  "@media (min-width: 600px)": { maxSize: "100%" },
+});
+```
