@@ -52,7 +52,7 @@ We also have the built-in Box component as an equivalent of div.
 ```tsx
 import { Box } from "just-styled";
 
-<Box style={{ fontSize = "100px" }}>Big text</Box>;
+<Box style={{ fontSize: "100px" }}>Big text</Box>;
 ```
 
 This is just a syntax sugar for the code below.
