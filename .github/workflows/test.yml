@@ -25,12 +25,16 @@ jobs:
         shell: bash
         run: |
           pnpm install --frozen-lockfile
+      - name: Set sanitized branch name
+        id: sanitize
+        shell: bash
+        run: echo "sanitized=$(echo '${{ matrix.branch }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
       - name: Run test
         run: pnpm run test:coverage
       - name: "Upload Coverage"
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-${{ matrix.branch }}
+          name: coverage-${{ steps.sanitize.outputs.sanitized }}
           path: coverage
   report-coverage:
     needs: test
@@ -39,10 +43,14 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - name: Set sanitized branch name
+        id: sanitize
+        shell: bash
+        run: echo "sanitized=$(echo '${{ github.head_ref }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
       - name: "Download Coverage Artifacts"
         uses: actions/download-artifact@v4
         with:
-          name: coverage-${{ github.head_ref }}
+          name: coverage-${{ steps.sanitize.outputs.sanitized }}
           path: coverage
       - uses: actions/download-artifact@v4
         with:
